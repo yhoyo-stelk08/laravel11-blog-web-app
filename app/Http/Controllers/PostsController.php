@@ -28,7 +28,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index', ['posts' => $this->posts,],);
     }
 
     /**
@@ -52,7 +52,9 @@ class PostsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort_if(!isset($this->posts[$id]),404);
+
+        return view('posts.show', ['post' => $this->posts[$id]]);
     }
 
     /**
