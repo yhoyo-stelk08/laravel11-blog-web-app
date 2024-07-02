@@ -12,9 +12,8 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index() : View
     {
-
         $posts = DB::table('blog_posts')->get();
         return view('posts.index', ['posts' => $posts,],);
     }
@@ -22,9 +21,9 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
-        //
+        return view('posts.create');
     }
 
     /**

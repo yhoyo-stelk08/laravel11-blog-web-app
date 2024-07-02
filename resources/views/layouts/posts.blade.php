@@ -9,7 +9,7 @@
     <title>Laravel Blog - @yield('header')</title>
   </head>
 
-  <body class="container m-8">
+  <body class="container p-8">
     @yield('content')
   </body>
 
