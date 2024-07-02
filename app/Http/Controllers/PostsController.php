@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogPost;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -31,7 +32,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new BlogPost();
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+
+        $post->saveOrFail();
+
+        return redirect()->route('posts.show',['post' => $post->id]);
     }
 
     /**

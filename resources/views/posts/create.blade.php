@@ -11,6 +11,7 @@
       action="{{ route('posts.store') }}"
       method="POST"
     >
+      @csrf
       <div class="m-4 flex items-center justify-start gap-8">
         <label for="title">Post Title</label>
         <input
