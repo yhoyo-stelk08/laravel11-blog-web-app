@@ -6,6 +6,23 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    private $posts = [
+        1 => [
+            'title' => 'Intro to Laravel',
+            'content' => 'This is a short intro to Laravel',
+            'is_new' => false,
+        ],
+        2 => [
+            'title' => 'Intro to PHP',
+            'content' => 'This is a short intro to PHP',
+            'is_new' => true,
+        ],
+        3 => [
+            'title' => 'Intro to Next JS',
+            'content' => 'This is a short intro to Next JS',
+            'is_new' => false,
+        ],
+    ];
     /**
      * Display a listing of the resource.
      */
