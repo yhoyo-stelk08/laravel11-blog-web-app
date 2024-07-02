@@ -21,6 +21,11 @@
           class="w-3/4 rounded-md border-2 p-2"
         >
       </div>
+      @error('title')
+        <div class="items-centerp-2 ml-32 w-2/4 text-xs text-red-400">
+          <label>{{ $message }}</label>
+        </div>
+      @enderror
       <div class="m-4 flex items-start justify-start gap-8">
         <label for="content">Content</label>
         <textarea
@@ -30,6 +35,11 @@
           class="ml-2 w-3/4 rounded-md border-2 p-2"
         ></textarea>
       </div>
+      @error('content')
+        <div class="items-centerp-2 ml-32 w-2/4 text-xs text-red-400">
+          <label>{{ $message }}</label>
+        </div>
+      @enderror
       <div class="flex items-center justify-end">
         <button
           type="submit"
