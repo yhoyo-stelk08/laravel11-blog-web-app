@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogPost;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+use App\Models\BlogPost;
+use App\Http\Requests\StorePost;
+
 class PostsController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
+    public function index(): View
     {
         $posts = DB::table('blog_posts')->get();
-        return view('posts.index', ['posts' => $posts,],);
+        return view('posts.index', ['posts' => $posts,], );
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create() : View
+    public function create(): View
     {
         return view('posts.create');
     }
@@ -30,27 +32,24 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        $request->validate([
-            'title' => 'bail|required|min:5|max:30',
-            'content' => 'required|min:10',
-        ]);
+        $validated_data = $request->validated();
         $post = new BlogPost();
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->title = $validated_data['title'];
+        $post->content = $validated_data['content'];
 
         $post->saveOrFail();
 
-        return redirect()->route('posts.show',['post' => $post->id]);
+        return redirect()->route('posts.show', ['post' => $post->id]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id) : View
+    public function show(string $id): View
     {
-        
+
         $post = DB::table('blog_posts')->find($id);
 
         return view('posts.show', ['post' => $post]);
