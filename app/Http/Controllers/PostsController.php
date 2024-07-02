@@ -2,33 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PostsController extends Controller
 {
-    private $posts = [
-        1 => [
-            'title' => 'Intro to Laravel',
-            'content' => 'This is a short intro to Laravel',
-            'is_new' => false,
-        ],
-        2 => [
-            'title' => 'Intro to PHP',
-            'content' => 'This is a short intro to PHP',
-            'is_new' => true,
-        ],
-        3 => [
-            'title' => 'Intro to Next JS',
-            'content' => 'This is a short intro to Next JS',
-            'is_new' => false,
-        ],
-    ];
+    
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
-        return view('posts.index', ['posts' => $this->posts,],);
+
+        $posts = DB::table('blog_posts')->get();
+        return view('posts.index', ['posts' => $posts,],);
     }
 
     /**
@@ -50,11 +38,12 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id) : View
     {
-        abort_if(!isset($this->posts[$id]),404);
+        
+        $post = DB::table('blog_posts')->find($id);
 
-        return view('posts.show', ['post' => $this->posts[$id]]);
+        return view('posts.show', ['post' => $post]);
     }
 
     /**

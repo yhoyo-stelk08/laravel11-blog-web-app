@@ -7,10 +7,10 @@
   @forelse ($posts as $post)
     <div class="mx-auto my-4">
       <h1 class="py-4 text-2xl font-bold">
-        {{ $post['title'] }}
+        {{ $post->title }}
       </h1>
       <p class="text-base">
-        {{ $post['content'] }}
+        {{ $post->content }}
       </p>
     </div>
 
