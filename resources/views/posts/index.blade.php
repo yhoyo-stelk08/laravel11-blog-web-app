@@ -1,11 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.posts')
 
-@section('title', 'Post Home')
+@section('header', 'Post Home')
 
-@section('header', 'Post Content')
 
 @section('content')
-  <div class="w-full p-8">
-    Home
-  </div>
+  @forelse ($posts as $post)
+    <div class="mx-auto my-4">
+      <h1 class="py-4 text-2xl font-bold">
+        {{ $post['title'] }}
+      </h1>
+      <p class="text-base">
+        {{ $post['content'] }}
+      </p>
+    </div>
+
+  @empty
+    <h1 class="text-2xl font-bold">
+      No Post Available
+    </h1>
+  @endforelse
 @endsection
