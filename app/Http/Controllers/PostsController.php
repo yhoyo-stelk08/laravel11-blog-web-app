@@ -40,6 +40,8 @@ class PostsController extends Controller
         $post->content = $validated_data['content'];
 
         $post->saveOrFail();
+        // create an flash message 
+        $request->session()->flash('status', 'Post has been created');
 
         return redirect()->route('posts.show', ['post' => $post->id]);
     }
