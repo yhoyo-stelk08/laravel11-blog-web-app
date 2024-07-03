@@ -9,4 +9,9 @@ class BlogPost extends Model
 {
     protected $fillable = ['title', 'content']; // the column that can be use for mass assignment
     use HasFactory;
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
