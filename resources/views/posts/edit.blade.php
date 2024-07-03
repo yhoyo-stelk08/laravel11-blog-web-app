@@ -4,7 +4,7 @@
 
 @section('content')
   <div
-    class="mx-auto flex w-auto max-w-2xl flex-col justify-start gap-4 rounded-lg border border-solid border-amber-300 p-4 shadow-lg"
+    class="mx-auto mt-4 flex w-auto max-w-2xl flex-col justify-start gap-4 rounded-lg border border-solid border-amber-300 p-4 shadow-lg"
   >
     <h1 class="text-center text-2xl font-bold">Update A Post</h1>
     <form

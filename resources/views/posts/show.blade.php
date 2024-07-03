@@ -4,7 +4,7 @@
 
 
 @section('content')
-  <div>
+  <div class="mt-4">
     <div class="mb-4">
       <a href="{{ route('posts.index') }}">
         <<
