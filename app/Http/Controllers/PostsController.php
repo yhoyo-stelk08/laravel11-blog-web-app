@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 use App\Models\BlogPost;
@@ -54,7 +53,7 @@ class PostsController extends Controller
     public function show(string $id): View
     {
 
-        $post = DB::table('blog_posts')->find($id);
+        $post = BlogPost::with('comments')->findOrFail($id);
 
         return view('posts.show', ['post' => $post]);
     }
