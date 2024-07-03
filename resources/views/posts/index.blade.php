@@ -4,12 +4,6 @@
 
 
 @section('content')
-  {{-- <div class="flex items-center justify-start">
-    <a
-      class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-      href="{{ route('posts.create') }}"
-    >Create Post</a>
-  </div> --}}
   @forelse ($posts as $post)
     <div class="mx-auto my-4">
       <h1 class="py-4 text-2xl font-bold">
@@ -18,6 +12,25 @@
       <p class="text-base">
         {{ $post->content }}
       </p>
+    </div>
+    <div class="flex items-center justify-start gap-4 py-4">
+      <a
+        href="{{ route('posts.edit', ['post' => $post->id]) }}"
+        class="rounded bg-blue-400 px-4 py-2 text-white hover:bg-blue-600"
+      >Edit Post</a>
+      <form
+        action="{{ route('posts.destroy', ['post' => $post->id]) }}"
+        method="POST"
+      >
+        @csrf
+        @method('DELETE')
+        <input
+          type="submit"
+          value="Delete Post"
+          class="rounded bg-red-400 px-4 py-2 text-white hover:bg-red-600"
+        >
+      </form>
+
     </div>
 
   @empty
