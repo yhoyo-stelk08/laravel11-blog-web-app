@@ -35,11 +35,13 @@ class PostsController extends Controller
     public function store(StorePost $request)
     {
         $validated_data = $request->validated();
-        $post = new BlogPost();
-        $post->title = $validated_data['title'];
-        $post->content = $validated_data['content'];
+        // $post = new BlogPost();
+        // $post->title = $validated_data['title'];
+        // $post->content = $validated_data['content'];
 
-        $post->saveOrFail();
+        // $post->saveOrFail();
+
+        $post = BlogPost::create($validated_data); //use mass assignment to BlogPost
         // create an flash message 
         $request->session()->flash('status', 'Post has been created');
 
