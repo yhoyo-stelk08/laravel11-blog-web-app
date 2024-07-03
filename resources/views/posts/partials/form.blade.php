@@ -4,7 +4,7 @@
     type="text"
     id="title"
     name="title"
-    value="{{ old('title') }}"
+    value="{{ old('title', optional($post ?? null)->title) }}"
     class="w-3/4 rounded-md border-2 p-2"
   >
 </div>
@@ -21,7 +21,7 @@
     id="content"
     class="ml-2 w-3/4 rounded-md border-2 p-2"
   >
-  {{ old('content') }}
+  {{ old('content', optional($post ?? null)->content) }}
   </textarea>
 </div>
 @error('content')
